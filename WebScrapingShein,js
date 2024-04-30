@@ -73,3 +73,28 @@ var datosJSON = JSON.stringify(datosPedidos);
 
 // Imprime los datos JSON en la consola
 console.log(datosJSON);
+
+// Convierte los datos a formato JSON
+var datosJSON = JSON.stringify(datosPedidos);
+
+// Crea un Blob con los datos JSON
+var blob = new Blob([datosJSON], { type: 'application/json' });
+
+// Crea una URL para el Blob
+var url = URL.createObjectURL(blob);
+
+// Crea un enlace para descargar el JSON
+var a = document.createElement('a');
+a.href = url;
+a.download = 'datos.json'; // Establece el nombre del archivo
+a.style.display = 'none';
+
+// Agrega el enlace al cuerpo del documento
+document.body.appendChild(a);
+
+// Simula un clic en el enlace para iniciar la descarga
+a.click();
+
+// Remueve el enlace del cuerpo del documento
+document.body.removeChild(a);
+
